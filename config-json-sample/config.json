@@ -1,0 +1,160 @@
+{
+    "development": {
+        "CONFIG_ID": "Development",
+        "TYPEORM_CONNECTION": "postgres",
+        "TYPEORM_HOST": "10.26.12.3",
+        "TYPEORM_USERNAME": "forecast_user",
+        "TYPEORM_PASSWORD": "Fo6cd3v",
+        "TYPEORM_DATABASE": "forecast_approval",
+        "TYPEORM_PORT": 5432,
+        "INSTANCE_CONNECTION_NAME": "project-45b146bd:us-east4:test",
+        "TYPEORM_ENTITIES": "./entities/*.js",
+        "yaml_data": {
+            "runtime": "nodejs",
+            "env": "flex",
+            "service": "sample-config-service",
+            "handlers": [
+                {
+                    "url": "/",
+                    "static_dir": "/",
+                    "http_headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }
+            ],
+            "resources": {
+                "cpu": 1,
+                "memory_gb": 2,
+                "disk_size_gb": 10,
+                "volumes": [
+                    {
+                        "name": "ramdisk1",
+                        "volume_type": "tmpfs",
+                        "size_gb": 0.5
+                    }
+                ]
+            },
+            "automatic_scaling": {
+                "min_num_instances": 1,
+                "max_num_instances": 15,
+                "cool_down_period_sec": 180,
+                "cpu_utilization": {
+                    "target_utilization": 0.6
+                }
+            },
+            "network": {
+                "name": "projects/project-4d333270/global/networks/google-managed-services-vpc-network",
+                "subnetwork_name": "google-managed-services-subnet-us-west2-10-26-24-0-slash-22"
+            },
+            "beta_settings": {
+                "cloud_sql_instances": "project-45b146bd:us-east4:test"
+            }
+        }
+    },
+    "uat": {
+        "CONFIG_ID": "UAT",
+        "TYPEORM_CONNECTION": "postgres",
+        "TYPEORM_HOST": "10.26.11.5",
+        "TYPEORM_USERNAME": "forecast_user",
+        "TYPEORM_PASSWORD": "F0r3cu@t",
+        "TYPEORM_DATABASE": "forecast_approval",
+        "TYPEORM_PORT": 5432,
+        "INSTANCE_CONNECTION_NAME": "sanm-gcp-forecast-uat:us-west2:sanm-forecast-uat-pg",
+        "TYPEORM_ENTITIES": "./entities/*.js",
+        "PORT": 8080,
+        "yaml_data": {
+            "runtime": "nodejs",
+            "env": "flex",
+            "service": "sample-config-service",
+            "handlers": [
+                {
+                    "url": "/",
+                    "static_dir": "/",
+                    "http_headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }
+            ],
+            "resources": {
+                "cpu": 1,
+                "memory_gb": 2,
+                "disk_size_gb": 10,
+                "volumes": [
+                    {
+                        "name": "ramdisk1",
+                        "volume_type": "tmpfs",
+                        "size_gb": 0.5
+                    }
+                ]
+            },
+            "automatic_scaling": {
+                "min_num_instances": 1,
+                "max_num_instances": 15,
+                "cool_down_period_sec": 180,
+                "cpu_utilization": {
+                    "target_utilization": 0.6
+                }
+            },
+            "network": {
+                "name": "projects/project-4d333270/global/networks/google-managed-services-vpc-network",
+                "subnetwork_name": "google-managed-services-subnet-us-west2-10-26-24-0-slash-22"
+            },
+            "beta_settings": {
+                "cloud_sql_instances": "sanm-gcp-forecast-uat:us-west2:sanm-forecast-uat-pg"
+            }
+        }
+    },
+    "production": {
+        "CONFIG_ID": "Production",
+        "TYPEORM_CONNECTION": "postgres",
+        "TYPEORM_HOST": "10.26.11.6",
+        "TYPEORM_USERNAME": "forecast_user",
+        "TYPEORM_PASSWORD": "F06C@Prd",
+        "TYPEORM_DATABASE": "forecast_approval",
+        "TYPEORM_PORT": 5432,
+        "INSTANCE_CONNECTION_NAME": "sanm-gcp-forecast-prod:us-west2:sanm-forecast-prod-pg",
+        "TYPEORM_ENTITIES": "./entities/*.js",
+        "PORT": 8080,
+        "yaml_data": {
+            "runtime": "nodejs",
+            "env": "flex",
+            "service": "sample-config-service",
+            "handlers": [
+                {
+                    "url": "/",
+                    "static_dir": "/",
+                    "http_headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }
+            ],
+            "resources": {
+                "cpu": 1,
+                "memory_gb": 2,
+                "disk_size_gb": 10,
+                "volumes": [
+                    {
+                        "name": "ramdisk1",
+                        "volume_type": "tmpfs",
+                        "size_gb": 0.5
+                    }
+                ]
+            },
+            "automatic_scaling": {
+                "min_num_instances": 1,
+                "max_num_instances": 15,
+                "cool_down_period_sec": 180,
+                "cpu_utilization": {
+                    "target_utilization": 0.6
+                }
+            },
+            "network": {
+                "name": "projects/project-4d333270/global/networks/google-managed-services-vpc-network",
+                "subnetwork_name": "google-managed-services-subnet-us-west2-10-26-24-0-slash-22"
+            },
+            "beta_settings": {
+                "cloud_sql_instances": "sanm-gcp-forecast-prod:us-west2:sanm-forecast-prod-pg"
+            }
+        }
+    }
+}
