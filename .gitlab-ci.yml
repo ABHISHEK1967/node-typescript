@@ -1,0 +1,29 @@
+image: google/cloud-sdk:alpine
+
+variables:
+  IMAGE_NAME: TEST/test-node-backend
+  CONTAINER_NAME: test-node-backend
+  IMAGE_FILE_NAME: test-node-backend
+  GIT_SSL_NO_VERIFY: "1"
+  
+stages:
+  - deploy_code
+
+deploy_development:
+  stage: deploy_code
+  tags:
+      - ci-cd
+  environment: development
+  only:
+  - development
+  before_script:
+  - echo $PROJECT_ID
+  script:
+  - echo $SERVICE_ACCOUNT > /tmp/$CI_PIPELINE_ID.json
+  - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
+  - gcloud config set project $PROJECT_ID
+  - gcloud --quiet --project $PROJECT_ID app deploy app.yaml
+
+after_script:
+- rm /tmp/$CI_PIPELINE_ID.json
+
